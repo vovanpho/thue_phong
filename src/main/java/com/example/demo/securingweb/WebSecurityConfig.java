@@ -11,17 +11,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.example.demo.securingweb.jsonwebtoken.AuthEntryPoint;
 import com.example.demo.securingweb.jsonwebtoken.AuthTokenFilter;
-import com.example.demo.service.UserDetailsServiceImpl;
+import com.example.demo.services.UserDetailsServiceImpl;
 
 
 
@@ -45,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	@Override
 	public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-		authenticationManagerBuilder.userDetailsService(null)
+		authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 	
 	@Bean
@@ -66,18 +62,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().authenticated();
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
-	
-//	@Bean
-//	@Override
-//	public UserDetailsService userDetailsService() {
-//		UserDetails user =
-//			 User.withDefaultPasswordEncoder()
-//				.username("user")
-//				.password("password")
-//				.roles("USER")
-//				.build();
-//
-//		return new InMemoryUserDetailsManager(user);
-//	}
+
 
 }

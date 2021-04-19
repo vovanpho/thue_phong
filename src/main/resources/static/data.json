@@ -1,0 +1,142 @@
+let data = {
+    "id":1,
+    "sumElement": 3,
+    "pageNu":1,
+    "elem":[
+        {
+            "id": "1",
+            "date":"April 20, 2021",
+            "title": "Nhân dịp khai trương",
+            "categoryName": "Promotion",
+            "imageId": "promotion_voucher_20.png",
+            "tags": ["HCM"],
+            "description": "Nhân dịp khai trương chúng tôi sẽ gửi vouscher siêu giảm giá, cho 20 khách hàng đặt phòng ngây hôm nay. Nhanh tay liên hệ với chúng tôi qua di động 0962 550 213 để được tư vấn cụ thể."
+        },
+        {
+            "id": "2",
+            "date":"April 20, 2021",
+            "title": "Giảm 5% kể từ ngày thứ 3",
+            "categoryName": "Promotion",
+            "imageId": "promotion_giam.png",
+            "tags": ["HCM"],
+            "description": "Giảm ngay!!! giảm sóc!!! giảm 5% cho khách thuê phòng từ ngày thứ 3 và tặng vocher giảm giá 10% từ ngày thứ 5. Cho lần thuê phòng tiếp. Còn gì nữa mà không liên hệ với chúng tôi 0962 550 213 để được tư vấn cụ thể."
+        },
+        {
+            "id": "3",
+            "date":"April 20, 2021",
+            "title": "Quà tặng lưu niệm",
+            "categoryName": "Promotion",
+            "imageId": "promotion_qua_tang.png",
+            "tags": ["HCM"],
+            "description": "Phòng thì thoải mái, tiện nghi, đầy đủ lại còn được tặng quà lưu niệm như: bút, nón, móc khóa, voucher giảm giá lần sau... Hãy liên hệ với chúng tôi qua số 0962.550.213 để được tư vấn cụ thể."
+        },
+    ]
+ }
+ 
+ let data = [
+    {
+        "id": 1,
+        "roomName": "Phòng học phổ thông nhỏ",
+        "roomImgs": ["phonghocnho.png", "phonghocnho02.png", "phonghocnho03.png"],
+        "description": "- Có sức chứa từ 25 – 40 HS - Diện tích từ 39 m2 trở lên - Khung giờ thuê linh động theo giờ hoặc theo ngày từ 7h30 – 22h (cả THỨ 7, CHỦ NHẬT) - Phòng học để giảng dạy ngôn ngữ: tiếng Trung, tiếng Hàn, tiếng Nhật... - Phòng hội họp nhóm, CLB... - Trang bị đầy đủ ánh sáng, bàn ghế, bảng, loa đài, quạt, điều hòa, tivi, máy chiếu…",
+        "stuffs": [
+            {
+                "id": 1,
+                "name": "Tivi",
+                "quantity": 1,
+                "desc": "LG màn hình 90 inch"
+            },
+            {
+                "id": 5,
+                "name": "micro",
+                "quantity": 1,
+                "desc": ""
+            }
+        ],
+        "price": 150000,
+        "priceImgs": ["eventprice.png", "classprice1.png", "classprice2.png", "classprice3.png"]
+    },
+    {
+        "id": 2,
+        "roomName": "Phòng học phổ thông lớn",
+        "roomImgs": ["phonghoclon.jpg", "phonghoclon02.jpg"],
+        "description": "- Có sức chứa từ 25 – 40 HS - Diện tích từ 39 m2 trở lên - Khung giờ thuê linh động theo giờ hoặc theo ngày từ 7h30 – 22h (cả THỨ 7, CHỦ NHẬT) - Phòng học để giảng dạy ngôn ngữ: tiếng Trung, tiếng Hàn, tiếng Nhật... - Phòng hội họp nhóm, CLB... - Trang bị đầy đủ ánh sáng, bàn ghế, bảng, loa đài, quạt, điều hòa, tivi, máy chiếu…",
+        "stuffs": [
+            {
+                "id": 1,
+                "name": "Tivi",
+                "quantity": 1,
+                "desc": "LG màn hình 90 inch"
+            },
+            {
+                "id": 5,
+                "name": "micro",
+                "quantity": 1,
+                "desc": ""
+            }
+        ],
+        "price": 200000,
+        "priceImgs": ["eventprice.png", "classprice1.png", "classprice2.png", "classprice3.png"]
+    },
+    {
+        "id": 3,
+        "roomName": "Phòng máy nhỏ",
+        "roomImgs": ["phongmaynho01.png", "phongmaynho02.png", "phongmaynho03.jpg", "phongmaynho04.jpg"],
+        "description": "- Không gian phòng máy nhỏ và không gian phòng máy lớn. - Không gian rộng sức chứa tối đa là 30 máy/phòng. - Với dàn máy móc hiện đại và tối ưu, Core i7 đời 8, tốc độ xử lý mạnh 3.20 Ghz, Ram 16 Gb, SDD 250 Gb, HHD 1T - Đảm bảo cho quá trình dạy 3D, đồ họa, IT…",
+        "stuffs": [
+            {
+                "id": 4,
+                "name": "PC",
+                "quantity": 15,
+                "desc": "Desktop-GPJI1103 - i7 8700@ 3.20GHz - Ram 16G - HHD 1TB + SSD 250GB - Màn Hình: SAMSUNG 24 inch"
+            }
+        ],
+        "price": 2000000,
+        "priceImgs": ["eventprice.png", "classprice1.png", "classprice2.png", "classprice3.png"]
+    },
+    {
+        "id": 4,
+        "roomName": "Phòng máy lớn",
+        "roomImgs": ["phongmaylon.jpg", "phongmaylon02.png", "phongmaylon03.jpg"],
+        "description": "- Không gian phòng máy nhỏ và không gian phòng máy lớn. - Không gian rộng sức chứa tối đa là 30 máy/phòng. - Với dàn máy móc hiện đại và tối ưu, Core i7 đời 8, tốc độ xử lý mạnh 3.20 Ghz, Ram 16 Gb, SDD 250 Gb, HHD 1T - Đảm bảo cho quá trình dạy 3D, đồ họa, IT…",
+        "stuffs": [
+            {
+                "id": 4,
+                "name": "PC",
+                "quantity": 25,
+                "desc": "Desktop-GPJI1103 - i7 8700@ 3.20GHz - Ram 16G - HHD 1TB + SSD 250GB - Màn Hình: SAMSUNG 24 inch"
+            }
+        ],
+        "price": 4000000,
+        "priceImgs": ["eventprice.png", "classprice1.png", "classprice2.png", "classprice3.png"]
+    },
+    {
+        "id": 5,
+        "roomName": "Phòng hội nghị",
+        "roomImgs": ["about_phongcafe.JPG", "phongevent02.png", "phongevent03.png"],
+        "description": "- Không gian phòng ốc sức chứa lớn tối đa khoảng 60 người. - Rộng đến 100 m2 - Gợi ý và hỗ trợ và set up theo đúng mục đích. - Với không gian đa dạng, phù hợp cho nhiều nhu cầu đặc biệt là hội nghị và sự kiện, sẽ mang đến những trải nghiệm tuyệt vời cho người dùng - Hỗ trợ TV, loa, máy chiếu",
+        "stuffs": [
+            {
+                "id": 1,
+                "name": "Tivi",
+                "quantity": 1,
+                "desc": "màn hình 90 inch"
+            },
+            {
+                "id": 2,
+                "name": "Bàn",
+                "quantity": 30,
+                "desc": ""
+            },
+            {
+                "id": 3,
+                "name": "Ghế",
+                "quantity": 50,
+                "desc": ""
+            }
+        ],
+        "price": 600000,
+        "priceImgs": ["eventprice.png", "classprice1.png", "classprice2.png", "classprice3.png"]
+    },
+]
+ 

@@ -9,32 +9,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "roles")
-public class Role {
+import com.example.demo.constant.ERole;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+@Entity
+@Table(name = "ROLES")
+public class RoleEntity {
 
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
 	private ERole name;
 
-	public Role() {
+	public RoleEntity() {
 
 		}
 
-	public Role(ERole name) {
+	public RoleEntity(ERole name) {
 			this.name = name;
-		}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public ERole getName() {

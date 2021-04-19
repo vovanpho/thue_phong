@@ -7,9 +7,6 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -22,15 +19,14 @@ import javax.validation.constraints.Size;
 
 
 @Entity
-@Table(name="users")
-public class User  {
+@Table(name="USERS")
+public class UserEntity extends BaseEntity{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(length = 8)
-	@Size(min=6)
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@NotEmpty
 	@NotBlank
 	private String password;
@@ -51,24 +47,17 @@ public class User  {
 	@JoinTable(	name = "user_roles", 
 				joinColumns = @JoinColumn(name = "user_id"), 
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles = new HashSet<>();
+	private Set<RoleEntity> roles = new HashSet<>();
 
-	public User() {
+	public UserEntity() {
 	}
 
-	public User(String username, String email, String password) {
+	public UserEntity(String username, String email, String password) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getUsername() {
 		return username;
@@ -94,11 +83,11 @@ public class User  {
 		this.password = password;
 	}
 
-	public Set<Role> getRoles() {
+	public Set<RoleEntity> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(Set<RoleEntity> roles) {
 		this.roles = roles;
 	}
 	
