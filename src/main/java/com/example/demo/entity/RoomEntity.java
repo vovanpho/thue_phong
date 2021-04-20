@@ -2,33 +2,39 @@ package com.example.demo.entity;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="ROOM")
-public class RoomEntity {
+public class RoomEntity extends BaseEntity {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@NotNull
 	private String name;
 	
-	@ManyToOne
-	@JoinColumn(name="", nullable = false)
-	private RoomTypeEntity CategoryRoom;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "room_id", referencedColumnName = "id")
+	private RoomTypeEntity roomType;
 	
 	@OneToMany(mappedBy = "room")
-	private Set<ImagesEntity> images;
+	private Set<RoomImagesEntity> images;
 	
 	@Column(length = 20000)
 	private String description;
+	
+	private Integer price;
 	
 	@OneToMany(mappedBy = "room")
 	private Set<StuffsEntity> stuffs;
@@ -41,20 +47,20 @@ public class RoomEntity {
 		this.name = name;
 	}
 
-	public RoomTypeEntity getCategoryRoom() {
-		return CategoryRoom;
+	public RoomTypeEntity getRoomType() {
+		return roomType;
 	}
 
-	public void setCategoryRoom(RoomTypeEntity categoryRoom) {
-		CategoryRoom = categoryRoom;
+	public void setRoomType(RoomTypeEntity roomType) {
+		this.roomType = roomType;
 	}
 
-	public Set<ImagesEntity> getImages() {
+	public Set<RoomImagesEntity> getImages() {
 		return images;
 	}
 
-	public void setImages(Set<ImagesEntity> images) {
-		this.images = images;
+	public void setImages(RoomImagesEntity roomImagesEntity) {
+		this.images = (Set<RoomImagesEntity>) roomImagesEntity;
 	}
 
 	public String getDescription() {
@@ -73,17 +79,14 @@ public class RoomEntity {
 		this.stuffs = stuffs;
 	}
 
-
-
-	public RoomEntity( String name, com.example.demo.entity.RoomTypeEntity categoryRoom, Set<ImagesEntity> images,
-			String description, Set<StuffsEntity> stuffs) {
-		super();
-		this.name = name;
-		CategoryRoom = categoryRoom;
-		this.images = images;
-		this.description = description;
-		this.stuffs = stuffs;
+	public Integer getPrice() {
+		return price;
 	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
 	
 	
 }

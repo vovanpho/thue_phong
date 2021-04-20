@@ -1,4 +1,4 @@
-package com.example.demo.services;
+package com.example.demo.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.entity.UserEntity;
-import com.example.demo.entity.UserDetailsImpl;
+import com.example.demo.entity.impl.UserDetailsImpl;
 import com.example.demo.repository.UserRepository;
 
 @Service

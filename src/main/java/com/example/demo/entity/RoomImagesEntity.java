@@ -1,22 +1,28 @@
 package com.example.demo.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.example.demo.constant.EImage;
+
 @Entity
 @Table(name="IMAGES")
-public class ImagesEntity {
+public class RoomImagesEntity extends BaseEntity {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@NotBlank
 	@Size(max=120)
 	private String name;
+	
+	private EImage cateOfImg;
 	
 	@ManyToOne
 	@JoinColumn(name="room_id", nullable = false)
@@ -37,6 +43,28 @@ public class ImagesEntity {
 	public void setRoom(RoomEntity room) {
 		this.room = room;
 	}
+
+	public EImage getCateOfImg() {
+		return cateOfImg;
+	}
+
+	public void setCateOfImg(EImage cateOfImg) {
+		this.cateOfImg = cateOfImg;
+	}
+
+	public RoomImagesEntity(@NotBlank @Size(max = 120) String name, EImage cateOfImg, RoomEntity room) {
+		super();
+		this.name = name;
+		this.cateOfImg = cateOfImg;
+		this.room = room;
+	}
+
+	public RoomImagesEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	
 	
 }

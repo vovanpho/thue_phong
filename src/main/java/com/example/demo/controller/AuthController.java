@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.constant.ERole;
 import com.example.demo.entity.RoleEntity;
 import com.example.demo.entity.UserEntity;
-import com.example.demo.entity.UserDetailsImpl;
+import com.example.demo.entity.impl.UserDetailsImpl;
 import com.example.demo.payload.request.LoginRequest;
 import com.example.demo.payload.request.SignupRequest;
 import com.example.demo.payload.response.HeaderResponse;

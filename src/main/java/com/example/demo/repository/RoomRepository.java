@@ -8,4 +8,6 @@ import com.example.demo.entity.RoomEntity;
 @Repository
 public interface RoomRepository extends JpaRepository<RoomEntity, Long>{
 
+	RoomEntity findOne(Long id);
+
 }

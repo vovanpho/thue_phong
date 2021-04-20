@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.example.demo.securingweb.jsonwebtoken.AuthEntryPoint;
 import com.example.demo.securingweb.jsonwebtoken.AuthTokenFilter;
-import com.example.demo.services.UserDetailsServiceImpl;
+import com.example.demo.services.impl.UserDetailsServiceImpl;
 
 
 
