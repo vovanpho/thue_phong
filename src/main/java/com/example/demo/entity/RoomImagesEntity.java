@@ -1,6 +1,9 @@
 package com.example.demo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -22,6 +25,8 @@ public class RoomImagesEntity extends BaseEntity {
 	@Size(max=120)
 	private String name;
 	
+	@Enumerated(EnumType.STRING)
+	@Column(length = 20)
 	private EImage cateOfImg;
 	
 	@ManyToOne

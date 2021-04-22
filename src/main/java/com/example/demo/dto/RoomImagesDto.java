@@ -1,12 +1,18 @@
 package com.example.demo.dto;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import com.example.demo.constant.EImage;
 
 public class RoomImagesDto extends AbstractDto<RoomImagesDto> {
 
 	private String name;
 	
+	@Enumerated(EnumType.STRING)
 	private EImage cateOfImg;
+	
+	
 
 	public String getName() {
 		return name;

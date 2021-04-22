@@ -21,4 +21,20 @@ public class RoomTypeEntity extends BaseEntity {
 	@Size(max=120)
 	@Column(unique = true)
 	private String name;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public RoomTypeEntity(@NotBlank @Size(max = 120) String name) {
+		super();
+		this.name = name;
+	}
+	public RoomTypeEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 }

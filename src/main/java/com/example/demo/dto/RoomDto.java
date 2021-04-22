@@ -2,7 +2,6 @@ package com.example.demo.dto;
 
 import java.util.Set;
 
-import com.example.demo.entity.RoomImagesEntity;
 import com.example.demo.entity.RoomTypeEntity;
 import com.example.demo.entity.StuffsEntity;
 

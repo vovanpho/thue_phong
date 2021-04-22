@@ -1,13 +1,9 @@
 package com.example.demo.entity;
 
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -25,19 +21,19 @@ public class RoomEntity extends BaseEntity {
 	private String name;
 	
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "room_id", referencedColumnName = "id")
+    @JoinColumn(name = "room_type_id", referencedColumnName = "id")
 	private RoomTypeEntity roomType;
-	
-	@OneToMany(mappedBy = "room")
-	private Set<RoomImagesEntity> images;
 	
 	@Column(length = 20000)
 	private String description;
 	
 	private Integer price;
 	
-	@OneToMany(mappedBy = "room")
-	private Set<StuffsEntity> stuffs;
+//	@OneToMany(mappedBy = "room")
+//	private Set<RoomImagesEntity> images;
+	
+//	@OneToMany(mappedBy = "room")
+//	private Set<StuffsEntity> stuffs;
 
 	public String getName() {
 		return name;
@@ -55,28 +51,12 @@ public class RoomEntity extends BaseEntity {
 		this.roomType = roomType;
 	}
 
-	public Set<RoomImagesEntity> getImages() {
-		return images;
-	}
-
-	public void setImages(RoomImagesEntity roomImagesEntity) {
-		this.images = (Set<RoomImagesEntity>) roomImagesEntity;
-	}
-
 	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public Set<StuffsEntity> getStuffs() {
-		return stuffs;
-	}
-
-	public void setStuffs(Set<StuffsEntity> stuffs) {
-		this.stuffs = stuffs;
 	}
 
 	public Integer getPrice() {
@@ -86,7 +66,4 @@ public class RoomEntity extends BaseEntity {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-
-	
-	
 }

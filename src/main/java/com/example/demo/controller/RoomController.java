@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.RoomDto;
 import com.example.demo.entity.RoomEntity;
 import com.example.demo.repository.RoomRepository;
+import com.example.demo.services.impl.RoomServiceImpl;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -18,11 +20,11 @@ import com.example.demo.repository.RoomRepository;
 public class RoomController {
 	
 	@Autowired 
-	private	RoomRepository roomRepository;
+	private	RoomServiceImpl roomServiceImpl;
 	
 	@GetMapping("/getdata")
-	public List<RoomEntity> getAlldata(){
-		return roomRepository.findAll();
+	public List<RoomDto> getAlldata(){
+		return roomServiceImpl.findAll();
 	}
 	
 }

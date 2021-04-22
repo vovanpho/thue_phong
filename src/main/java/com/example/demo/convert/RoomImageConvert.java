@@ -13,12 +13,18 @@ public class RoomImageConvert implements BaseConverter<RoomImagesEntity, RoomIma
 	public RoomImagesEntity toEntity(RoomImagesDto dto) {
 		// TODO Auto-generated method stub
 		RoomImagesEntity roomImagesEntity = new RoomImagesEntity();
-		return null;
+		roomImagesEntity.setId(dto.getId());
+		roomImagesEntity.setName(dto.getName());
+		roomImagesEntity.setCateOfImg(dto.getCateOfImg());
+		return roomImagesEntity;
 	}
 
 	@Override
 	public RoomImagesDto toDto(RoomImagesEntity entity) {
 		// TODO Auto-generated method stub
-		return null;
+		RoomImagesDto roomImagesDto = new RoomImagesDto();
+		roomImagesDto.setName(entity.getName());
+		roomImagesDto.setCateOfImg(entity.getCateOfImg());
+		return roomImagesDto;
 	}
 }
