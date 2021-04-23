@@ -1,10 +1,8 @@
 package com.example.demo.dto;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-public class AbstractDto<T> {
+public class AbstractDto{
 	
 	private Long id;
 
@@ -15,8 +13,6 @@ public class AbstractDto<T> {
 	private Date lastModifiedDate;
 
 	private String lastModifiedBy;
-
-	private List<T> listResult = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -56,14 +52,6 @@ public class AbstractDto<T> {
 
 	public void setLastModifiedBy(String lastModifiedBy) {
 		this.lastModifiedBy = lastModifiedBy;
-	}
-
-	public List<T> getListResult() {
-		return listResult;
-	}
-
-	public void setListResult(List<T> listResult) {
-		this.listResult = listResult;
 	}
 	
 	

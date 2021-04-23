@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 import com.example.demo.constant.EImage;
 
 @Entity
-@Table(name="IMAGES")
+@Table(name="ROOM_IMAGES")
 public class RoomImagesEntity extends BaseEntity {
 	
 	/**
@@ -30,7 +30,7 @@ public class RoomImagesEntity extends BaseEntity {
 	private EImage cateOfImg;
 	
 	@ManyToOne
-	@JoinColumn(name="room_id", nullable = false)
+	@JoinColumn(name="room_id", nullable = true)
 	private RoomEntity room;
 
 	public String getName() {

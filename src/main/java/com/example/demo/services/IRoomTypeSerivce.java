@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
-public interface IRoomTypeSerivce {
+import com.example.demo.entity.RoomTypeEntity;
 
+public interface IRoomTypeSerivce {
+	RoomTypeEntity save(RoomTypeEntity roomTypeEntity);
 }

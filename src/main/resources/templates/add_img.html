@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Spring Security Example </title>
+    </head>
+    <body>
+        <form th:action="@{/api/room/set-data-type}" method="post">
+            <div><label> User Name : <input type="text" required="required" name="username"/> </label></div>
+            <div><label> Password: <input type="password" required="required" name="password"/> </label></div>
+            <div><input type="submit" value="Sign In"/></div>
+        </form>
+    </body>
+    <script th:inline="javascript">
+    $('#myform').submit(function(e){  
+    	
+    	var  a=parseInt($('#firstno').val(),10);
+    	console.log(a);
+    	var  b=parseInt($('#secondno').val(),10);
+    	console.log(b);
+                       if(a>b){                           
+                        $.ajax({
+                            type: 'post',
+                             url: "/result.html",
+                              data: $('#myform').serialize(),
+                              success: function(returnedData){
+                            	  console.log("Success"); 
+                            	  alert("success")
+                                },    
+
+                                error: function(xhr, exception) {
+                                	console.log(exception);
+                                    }
+                        }); 
+                       }
+                       else{
+                           alert("Validation failed");
+                           e.preventDefault(); 
+                       }
+                                         
+                    });
+    </script>
+</html>

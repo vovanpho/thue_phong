@@ -24,7 +24,7 @@ public class RoomEntity extends BaseEntity {
     @JoinColumn(name = "room_type_id", referencedColumnName = "id")
 	private RoomTypeEntity roomType;
 	
-	@Column(length = 20000)
+	@Column(columnDefinition = "TEXT")
 	private String description;
 	
 	private Integer price;

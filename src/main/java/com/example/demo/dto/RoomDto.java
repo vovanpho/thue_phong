@@ -5,7 +5,7 @@ import java.util.Set;
 import com.example.demo.entity.RoomTypeEntity;
 import com.example.demo.entity.StuffsEntity;
 
-public class RoomDto extends AbstractDto<RoomDto>{
+public class RoomDto extends AbstractDto{
 	
 	private String name;
 	private Set<RoomImagesDto> roomImgs;

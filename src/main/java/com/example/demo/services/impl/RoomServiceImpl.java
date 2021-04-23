@@ -28,6 +28,9 @@ public class RoomServiceImpl implements IRoomService {
 
 	@Autowired
 	private RoomImageSerivceImpl roomImageSerivceImpl;
+	
+	@Autowired
+	private StuffsServiceImpl stuffsServiceImpl;
 
 	@Autowired
 	private RoomImageConvert roomImageConvert;
@@ -43,31 +46,39 @@ public class RoomServiceImpl implements IRoomService {
 			RoomEntity oldRoomEntity = roomRepository.findOneById(roomDto.getId());
 			roomEntity = roomConvert.convertEntity(roomDto, oldRoomEntity);
 			//			
-			roomDto.getPriceImgs().forEach(t -> {
-				roomDto.getRoomImgs().add(t);
-			});
-			Set<RoomImagesEntity> roomImages = roomImageSerivceImpl.findAllByRoomId(roomDto.getId());
-			roomDto.getRoomImgs().forEach(t -> {
-				if (roomImages.add(roomImageConvert.toEntity(t))) {
-					roomImageSerivceImpl.save(t);
-				}
-			});
+//			roomDto.getPriceImgs().forEach(t -> {
+//				roomDto.getRoomImgs().add(t);
+//			});
+//			Set<RoomImagesEntity> roomImages = roomImageSerivceImpl.findAllByRoomId(roomDto.getId());
+//			roomDto.getRoomImgs().forEach(t -> {
+//				if (roomImages.add(roomImageConvert.toEntity(t))) {
+//					roomImageSerivceImpl.save(t);
+//				}
+//			});
+			roomTypeRepository.save(roomDto.getRoomType());
+			RoomTypeEntity roomTypeEntity = roomTypeRepository.findOneByName(roomDto.getRoomType().getName());
+			roomEntity.setRoomType(roomTypeEntity);
 
 		} else {
 			roomEntity = roomConvert.convertEntity(roomDto);
-			//			
-			roomDto.getPriceImgs().forEach(t->{
-				roomDto.getRoomImgs().add(t);
-			});
-			roomDto.getRoomImgs().forEach(t->{
-				roomImageSerivceImpl.save(t);
-			});
-			
-			
+//			//			
+//			roomDto.getPriceImgs().forEach(t->{
+//				roomDto.getRoomImgs().add(t);
+//			});
+//			roomDto.getRoomImgs().forEach(t->{
+//				roomImageSerivceImpl.save(t);
+//			});
+			roomTypeRepository.save(roomDto.getRoomType());
+			RoomTypeEntity roomTypeEntity = roomTypeRepository.findOneByName(roomDto.getRoomType().getName());
+			roomEntity.setRoomType(roomTypeEntity);
 		}
-
-		RoomTypeEntity roomTypeEntity = roomTypeRepository.findOneByName(roomDto.getRoomType().getName());
-		roomEntity.setRoomType(roomTypeEntity);
+//		
+//		roomDto.getStuffs().forEach(t->{
+//			stuffsServiceImpl.save(t);
+//		});
+		
+		
+		
 
 		roomEntity = roomRepository.save(roomEntity);
 		return roomConvert.convertToDto(roomEntity);

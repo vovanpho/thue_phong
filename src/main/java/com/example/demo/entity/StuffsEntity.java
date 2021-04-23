@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,14 +22,13 @@ public class StuffsEntity extends BaseEntity {
 	@Size(max=120)
 	private String name;
 	
-	@NotBlank 
-	private  Integer quality;
+	private Integer quality;
 	
-	@NotBlank
+	@Column(columnDefinition = "TEXT")
 	private String description;
 	
 	@ManyToOne
-	@JoinColumn(name="room_id", nullable = false)
+	@JoinColumn(name="room_id", nullable = true)
 	private RoomEntity room;
 
 	public String getName() {

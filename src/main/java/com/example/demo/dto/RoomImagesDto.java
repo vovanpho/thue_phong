@@ -5,7 +5,7 @@ import javax.persistence.Enumerated;
 
 import com.example.demo.constant.EImage;
 
-public class RoomImagesDto extends AbstractDto<RoomImagesDto> {
+public class RoomImagesDto extends AbstractDto{
 
 	private String name;
 	
