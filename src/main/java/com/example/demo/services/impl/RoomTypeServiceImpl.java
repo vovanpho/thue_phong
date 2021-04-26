@@ -1,5 +1,7 @@
 package com.example.demo.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,12 @@ public class RoomTypeServiceImpl  implements IRoomTypeSerivce{
 		// TODO Auto-generated method stub
 		return roomTypeRepository.save(roomTypeEntity);
 	}
+
+	@Override
+	public List<RoomTypeEntity> listAllData() {
+		// TODO Auto-generated method stub
+		return roomTypeRepository.findAll();
+	}
+	
 	
 }

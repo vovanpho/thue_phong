@@ -8,6 +8,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+
 @Entity
 @Table(name="ROOM")
 public class RoomEntity extends BaseEntity {
@@ -18,7 +19,7 @@ public class RoomEntity extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	@NotNull
-	private String name;
+	private String nameRoom;
 	
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "room_type_id", referencedColumnName = "id")
@@ -28,19 +29,13 @@ public class RoomEntity extends BaseEntity {
 	private String description;
 	
 	private Integer price;
-	
-//	@OneToMany(mappedBy = "room")
-//	private Set<RoomImagesEntity> images;
-	
-//	@OneToMany(mappedBy = "room")
-//	private Set<StuffsEntity> stuffs;
 
-	public String getName() {
-		return name;
+	public String getNameRoom() {
+		return nameRoom;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNameRoom(String nameRoom) {
+		this.nameRoom = nameRoom;
 	}
 
 	public RoomTypeEntity getRoomType() {
@@ -66,4 +61,22 @@ public class RoomEntity extends BaseEntity {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
+
+	public RoomEntity(@NotNull String nameRoom, RoomTypeEntity roomType, String description, Integer price) {
+		super();
+		this.nameRoom = nameRoom;
+		this.roomType = roomType;
+		this.description = description;
+		this.price = price;
+	}
+
+	public RoomEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	
+
 }

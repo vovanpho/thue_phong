@@ -23,7 +23,7 @@ public class RoomImagesEntity extends BaseEntity {
 
 	@NotBlank
 	@Size(max=120)
-	private String name;
+	private String nameImage;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
@@ -33,20 +33,12 @@ public class RoomImagesEntity extends BaseEntity {
 	@JoinColumn(name="room_id", nullable = true)
 	private RoomEntity room;
 
-	public String getName() {
-		return name;
+	public String getNameImage() {
+		return nameImage;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public RoomEntity getRoom() {
-		return room;
-	}
-
-	public void setRoom(RoomEntity room) {
-		this.room = room;
+	public void setNameImage(String nameImage) {
+		this.nameImage = nameImage;
 	}
 
 	public EImage getCateOfImg() {
@@ -57,10 +49,11 @@ public class RoomImagesEntity extends BaseEntity {
 		this.cateOfImg = cateOfImg;
 	}
 
-	public RoomImagesEntity(@NotBlank @Size(max = 120) String name, EImage cateOfImg, RoomEntity room) {
-		super();
-		this.name = name;
-		this.cateOfImg = cateOfImg;
+	public RoomEntity getRoom() {
+		return room;
+	}
+
+	public void setRoom(RoomEntity room) {
 		this.room = room;
 	}
 
@@ -68,8 +61,13 @@ public class RoomImagesEntity extends BaseEntity {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
+
+	public RoomImagesEntity(@NotBlank @Size(max = 120) String nameImage, EImage cateOfImg, RoomEntity room) {
+		super();
+		this.nameImage = nameImage;
+		this.cateOfImg = cateOfImg;
+		this.room = room;
+	}
+
 	
 }

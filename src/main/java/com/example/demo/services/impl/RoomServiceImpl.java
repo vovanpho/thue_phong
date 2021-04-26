@@ -2,7 +2,6 @@ package com.example.demo.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +10,6 @@ import com.example.demo.convert.RoomConvert;
 import com.example.demo.convert.RoomImageConvert;
 import com.example.demo.dto.RoomDto;
 import com.example.demo.entity.RoomEntity;
-import com.example.demo.entity.RoomImagesEntity;
 import com.example.demo.entity.RoomTypeEntity;
 import com.example.demo.repository.RoomRepository;
 import com.example.demo.repository.RoomTypeRepository;
@@ -25,15 +23,6 @@ public class RoomServiceImpl implements IRoomService {
 
 	@Autowired
 	private RoomTypeRepository roomTypeRepository;
-
-	@Autowired
-	private RoomImageSerivceImpl roomImageSerivceImpl;
-	
-	@Autowired
-	private StuffsServiceImpl stuffsServiceImpl;
-
-	@Autowired
-	private RoomImageConvert roomImageConvert;
 
 	@Autowired
 	private RoomConvert roomConvert;
@@ -56,7 +45,7 @@ public class RoomServiceImpl implements IRoomService {
 //				}
 //			});
 			roomTypeRepository.save(roomDto.getRoomType());
-			RoomTypeEntity roomTypeEntity = roomTypeRepository.findOneByName(roomDto.getRoomType().getName());
+			RoomTypeEntity roomTypeEntity = roomTypeRepository.findOneByNameTypeRoom(roomDto.getRoomType().getNameTypeRoom());
 			roomEntity.setRoomType(roomTypeEntity);
 
 		} else {
@@ -69,7 +58,7 @@ public class RoomServiceImpl implements IRoomService {
 //				roomImageSerivceImpl.save(t);
 //			});
 			roomTypeRepository.save(roomDto.getRoomType());
-			RoomTypeEntity roomTypeEntity = roomTypeRepository.findOneByName(roomDto.getRoomType().getName());
+			RoomTypeEntity roomTypeEntity = roomTypeRepository.findOneByNameTypeRoom(roomDto.getRoomType().getNameTypeRoom());
 			roomEntity.setRoomType(roomTypeEntity);
 		}
 //		

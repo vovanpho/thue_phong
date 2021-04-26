@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+
 @Entity
 @Table(name = "STUFFS")
 public class StuffsEntity extends BaseEntity {
@@ -20,7 +21,7 @@ public class StuffsEntity extends BaseEntity {
 
 	@NotBlank
 	@Size(max=120)
-	private String name;
+	private String nameStuff;
 	
 	private Integer quality;
 	
@@ -31,12 +32,12 @@ public class StuffsEntity extends BaseEntity {
 	@JoinColumn(name="room_id", nullable = true)
 	private RoomEntity room;
 
-	public String getName() {
-		return name;
+	public String getNameStuff() {
+		return nameStuff;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNameStuff(String nameStuff) {
+		this.nameStuff = nameStuff;
 	}
 
 	public Integer getQuality() {
@@ -63,6 +64,19 @@ public class StuffsEntity extends BaseEntity {
 		this.room = room;
 	}
 
+	public StuffsEntity(@NotBlank @Size(max = 120) String nameStuff, Integer quality, String description,
+			RoomEntity room) {
+		super();
+		this.nameStuff = nameStuff;
+		this.quality = quality;
+		this.description = description;
+		this.room = room;
+	}
+
+	public StuffsEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	
 	

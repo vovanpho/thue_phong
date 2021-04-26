@@ -8,10 +8,13 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.DynamicUpdate;
 
+
 @Entity
 @DynamicUpdate
 @Table(name="ROOM_TYPE")
 public class RoomTypeEntity extends BaseEntity {
+	
+	
 	
 	/**
 	 * 
@@ -20,16 +23,16 @@ public class RoomTypeEntity extends BaseEntity {
 	@NotBlank
 	@Size(max=120)
 	@Column(unique = true)
-	private String name;
-	public String getName() {
-		return name;
+	private String nameTypeRoom;
+	public String getNameTypeRoom() {
+		return nameTypeRoom;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNameTypeRoom(String nameTypeRoom) {
+		this.nameTypeRoom = nameTypeRoom;
 	}
-	public RoomTypeEntity(@NotBlank @Size(max = 120) String name) {
+	public RoomTypeEntity(@NotBlank @Size(max = 120) String nameTypeRoom) {
 		super();
-		this.name = name;
+		this.nameTypeRoom = nameTypeRoom;
 	}
 	public RoomTypeEntity() {
 		super();
