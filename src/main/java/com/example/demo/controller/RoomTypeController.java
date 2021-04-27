@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,5 +33,12 @@ public class RoomTypeController {
 	@GetMapping("/get-list-data")
 	public List<RoomTypeEntity> getAllData(){
 		return roomTypeServiceImpl.listAllData();
+	}
+	@PostMapping("/delete")
+	public ResponseEntity<String> detele(@RequestBody RoomTypeEntity roomTypeEntity) {
+		if(roomTypeServiceImpl.detete(roomTypeEntity)) {
+			return new ResponseEntity<>("su", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("not", HttpStatus.BAD_REQUEST);
 	}
 }

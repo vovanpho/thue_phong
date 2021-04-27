@@ -26,6 +26,16 @@ public class RoomTypeServiceImpl  implements IRoomTypeSerivce{
 		// TODO Auto-generated method stub
 		return roomTypeRepository.findAll();
 	}
+
+	@Override
+	public boolean detete(RoomTypeEntity roomTypeEntity) {
+		// TODO Auto-generated method stub
+		 roomTypeRepository.delete(roomTypeEntity);
+		 if(roomTypeRepository.existsById(roomTypeEntity.getId())) {
+			 return false;
+		 }
+		return true;
+	}
 	
 	
 }

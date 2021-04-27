@@ -37,7 +37,7 @@ public class RoomConvert {
 		roomDto.setCreatedDate(entity.getCreatedDate());
 		roomDto.setLastModifiedBy(entity.getLastModifiedBy());
 		roomDto.setLastModifiedDate(entity.getLastModifiedDate());
-		roomDto.setName(entity.getNameRoom());
+		roomDto.setNameRoom(entity.getNameRoom());
 		roomDto.setDescription(entity.getDescription());
 		roomDto.setPrice(entity.getPrice());
 		roomDto.setRoomType(entity.getRoomType());
@@ -66,7 +66,7 @@ public class RoomConvert {
 	public RoomEntity convertEntity(RoomDto dto) {
 		RoomEntity roomEntity = new RoomEntity();
 		roomEntity.setId(dto.getId());
-		roomEntity.setNameRoom(dto.getName());
+		roomEntity.setNameRoom(dto.getNameRoom());
 		roomEntity.setDescription(dto.getDescription());
 		roomEntity.setRoomType(dto.getRoomType());
 		roomEntity.setPrice(dto.getPrice());
@@ -85,7 +85,7 @@ public class RoomConvert {
 	}
 	public RoomEntity convertEntity(RoomDto dto, RoomEntity entity) {
 		entity.setId(dto.getId());
-		entity.setNameRoom(dto.getName());
+		entity.setNameRoom(dto.getNameRoom());
 		entity.setDescription(dto.getDescription());
 		entity.setRoomType(dto.getRoomType());
 		entity.setPrice(dto.getPrice());

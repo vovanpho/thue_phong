@@ -7,20 +7,25 @@ import com.example.demo.entity.StuffsEntity;
 
 public class RoomDto extends AbstractDto{
 	
-	private String name;
+	private String nameRoom;
 	private Set<RoomImagesDto> roomImgs;
 	private String description;
 	private Set<StuffsEntity> stuffs;
 	private Integer price;
 	private Set<RoomImagesDto> priceImgs;
 	private RoomTypeEntity roomType;
-	public String getName() {
-		return name;
+	public String getNameRoom() {
+		return nameRoom;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNameRoom(String nameRoom) {
+		this.nameRoom = nameRoom;
 	}
-	
+	public Set<RoomImagesDto> getRoomImgs() {
+		return roomImgs;
+	}
+	public void setRoomImgs(Set<RoomImagesDto> roomImgs) {
+		this.roomImgs = roomImgs;
+	}
 	public String getDescription() {
 		return description;
 	}
@@ -39,32 +44,22 @@ public class RoomDto extends AbstractDto{
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-
-	public RoomTypeEntity getRoomType() {
-		return roomType;
-	}
-	public void setRoomType(RoomTypeEntity roomType) {
-		this.roomType = roomType;
-	}
-	
-	public Set<RoomImagesDto> getRoomImgs() {
-		return roomImgs;
-	}
-	public void setRoomImgs(Set<RoomImagesDto> roomImgs) {
-		this.roomImgs = roomImgs;
-	}
 	public Set<RoomImagesDto> getPriceImgs() {
 		return priceImgs;
 	}
 	public void setPriceImgs(Set<RoomImagesDto> priceImgs) {
 		this.priceImgs = priceImgs;
 	}
-	
-	
-	public RoomDto(String name, Set<RoomImagesDto> roomImgs, String description, Set<StuffsEntity> stuffs,
+	public RoomTypeEntity getRoomType() {
+		return roomType;
+	}
+	public void setRoomType(RoomTypeEntity roomType) {
+		this.roomType = roomType;
+	}
+	public RoomDto(String nameRoom, Set<RoomImagesDto> roomImgs, String description, Set<StuffsEntity> stuffs,
 			Integer price, Set<RoomImagesDto> priceImgs, RoomTypeEntity roomType) {
 		super();
-		this.name = name;
+		this.nameRoom = nameRoom;
 		this.roomImgs = roomImgs;
 		this.description = description;
 		this.stuffs = stuffs;
@@ -76,6 +71,7 @@ public class RoomDto extends AbstractDto{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 	
 	
