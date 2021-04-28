@@ -20,7 +20,7 @@ public class RoomTypeEntity extends BaseEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Size(max=120)
+	
 	@Column(unique = true)
 	private String nameTypeRoom;
 	public String getNameTypeRoom() {
@@ -29,7 +29,7 @@ public class RoomTypeEntity extends BaseEntity {
 	public void setNameTypeRoom(String nameTypeRoom) {
 		this.nameTypeRoom = nameTypeRoom;
 	}
-	public RoomTypeEntity( @Size(max = 120) String nameTypeRoom) {
+	public RoomTypeEntity(String nameTypeRoom) {
 		super();
 		this.nameTypeRoom = nameTypeRoom;
 	}

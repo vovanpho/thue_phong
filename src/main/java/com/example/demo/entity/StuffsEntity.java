@@ -29,7 +29,7 @@ public class StuffsEntity extends BaseEntity {
 	private String description;
 	
 	@ManyToOne
-	@JoinColumn(name="room_id", nullable = true)
+	@JoinColumn(name="room_id", nullable = false)
 	private RoomEntity room;
 
 	public String getNameStuff() {

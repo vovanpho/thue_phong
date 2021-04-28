@@ -44,8 +44,9 @@ public class RoomServiceImpl implements IRoomService {
 //					roomImageSerivceImpl.save(t);
 //				}
 //			});
-			roomTypeRepository.save(roomDto.getRoomType());
-			RoomTypeEntity roomTypeEntity = roomTypeRepository.findOneByNameTypeRoom(roomDto.getRoomType().getNameTypeRoom());
+			RoomTypeEntity roomTypeEntity = roomDto.getRoomType();
+			roomTypeRepository.save(roomTypeEntity);
+			roomTypeEntity = roomTypeRepository.findOneByNameTypeRoom(roomDto.getRoomType().getNameTypeRoom());
 			roomEntity.setRoomType(roomTypeEntity);
 
 		} else {

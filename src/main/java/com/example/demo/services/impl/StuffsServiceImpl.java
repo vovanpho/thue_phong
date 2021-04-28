@@ -1,5 +1,6 @@
 package com.example.demo.services.impl;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,12 @@ public class StuffsServiceImpl implements IStuffsService{
 	public Set<StuffsEntity> findAllByRoomId(Long id) {
 		// TODO Auto-generated method stub
 		return stuffsRepository.findAllByRoomId(id);
+	}
+
+	@Override
+	public List<StuffsEntity> findAll() {
+		// TODO Auto-generated method stub
+		return stuffsRepository.findAll();
 	}
 
 }
