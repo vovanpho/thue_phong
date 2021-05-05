@@ -22,8 +22,8 @@ public class StuffsServiceImpl implements IStuffsService{
 		return stuffsRepository.save(entity) ;
 	}
 
-	@Override
-	public Set<StuffsEntity> findAllByRoomId(Long id) {
+
+	public Set<StuffsEntity> findAllByRoomId(String id) {
 		// TODO Auto-generated method stub
 		return stuffsRepository.findAllByRoomId(id);
 	}
@@ -33,5 +33,14 @@ public class StuffsServiceImpl implements IStuffsService{
 		// TODO Auto-generated method stub
 		return stuffsRepository.findAll();
 	}
+
+
+	@Override
+	public Set<StuffsEntity> findAllByRoomId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

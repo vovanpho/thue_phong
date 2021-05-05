@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.example.demo.entity.FileDB;
+import com.example.demo.entity.FileDBEntity;
 import com.example.demo.message.ResponseFile;
 import com.example.demo.message.ResponseMessage;
-import com.example.demo.services.impl.FileStorageService;
+import com.example.demo.services.impl.FileStorageServiceImpl;
 
 
 
@@ -30,18 +30,21 @@ import com.example.demo.services.impl.FileStorageService;
 public class FileDBController {
 
   @Autowired
-  private FileStorageService storageService;
+  private FileStorageServiceImpl storageService;
 
   @PostMapping("/upload")
-  public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
+  public ResponseEntity<ResponseMessage> uploadFile(
+		  @RequestParam("file") List<MultipartFile> files, 
+		  @RequestParam("cateOfImg") String cateOfImg,
+		  @RequestParam("id") String id){
     String message = "";
     try {
-      storageService.store(file);
+      storageService.store(files, cateOfImg, id);
 
-      message = "Uploaded the file successfully: " + file.getOriginalFilename();
+      message = "Uploaded the file successfully ";
       return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
     } catch (Exception e) {
-      message = "Could not upload the file: " + file.getOriginalFilename() + "!";
+      message = "Could not upload the file " ;
       return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
     }
   }
@@ -67,7 +70,7 @@ public class FileDBController {
 
   @GetMapping("/files/{id}")
   public ResponseEntity<byte[]> getFile(@PathVariable String id) {
-    FileDB fileDB = storageService.getFile(id);
+    FileDBEntity fileDB = storageService.getFile(id);
 
     return ResponseEntity.ok()
         .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")

@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.constant.EImage;
+import com.example.demo.dto.FileDBDto;
 import com.example.demo.dto.RoomDto;
-import com.example.demo.dto.RoomImagesDto;
+import com.example.demo.entity.FileDBEntity;
 import com.example.demo.entity.RoomEntity;
-import com.example.demo.entity.RoomImagesEntity;
 import com.example.demo.entity.StuffsEntity;
-import com.example.demo.services.impl.RoomImageSerivceImpl;
+import com.example.demo.services.impl.FileStorageServiceImpl;
 //import com.example.demo.services.impl.StuffsService;
 import com.example.demo.services.impl.StuffsServiceImpl;
 
@@ -20,10 +20,10 @@ import com.example.demo.services.impl.StuffsServiceImpl;
 public class RoomConvert {
 	
 	@Autowired
-	private RoomImageConvert roomImageConvert;
+	private FileDBConvert roomImageConvert;
 	
 	@Autowired
-	private RoomImageSerivceImpl roomImagesServiceImpl;
+	private FileStorageServiceImpl fileStorageServiceImpl;
 	
 	@Autowired
 	private StuffsServiceImpl stuffsServiceImpl;
@@ -46,9 +46,9 @@ public class RoomConvert {
 		roomDto.setStuffs(stuffs);
 		
 		// images		
-		Set<RoomImagesDto> roomImgs = new HashSet<RoomImagesDto>();
-		Set<RoomImagesDto> priceImgs = new HashSet<RoomImagesDto>();
-		Set<RoomImagesEntity> roomImages = roomImagesServiceImpl.findAllByRoomId(entity.getId());
+		Set<FileDBDto> roomImgs = new HashSet<FileDBDto>();
+		Set<FileDBDto> priceImgs = new HashSet<FileDBDto>();
+		Set<FileDBEntity> roomImages = fileStorageServiceImpl.findAllByRoomId(entity.getId());
 		roomImages.forEach(t -> {
 			if(t.getCateOfImg().equals(EImage.Nomal)) {
 				roomImgs.add(roomImageConvert.toDto(t));

@@ -8,11 +8,11 @@ import com.example.demo.entity.StuffsEntity;
 public class RoomDto extends AbstractDto{
 	
 	private String nameRoom;
-	private Set<RoomImagesDto> roomImgs;
+	private Set<FileDBDto> roomImgs;
 	private String description;
 	private Set<StuffsEntity> stuffs;
 	private Integer price;
-	private Set<RoomImagesDto> priceImgs;
+	private Set<FileDBDto> priceImgs;
 	private RoomTypeEntity roomType;
 	public String getNameRoom() {
 		return nameRoom;
@@ -20,10 +20,10 @@ public class RoomDto extends AbstractDto{
 	public void setNameRoom(String nameRoom) {
 		this.nameRoom = nameRoom;
 	}
-	public Set<RoomImagesDto> getRoomImgs() {
+	public Set<FileDBDto> getRoomImgs() {
 		return roomImgs;
 	}
-	public void setRoomImgs(Set<RoomImagesDto> roomImgs) {
+	public void setRoomImgs(Set<FileDBDto> roomImgs) {
 		this.roomImgs = roomImgs;
 	}
 	public String getDescription() {
@@ -44,10 +44,10 @@ public class RoomDto extends AbstractDto{
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-	public Set<RoomImagesDto> getPriceImgs() {
+	public Set<FileDBDto> getPriceImgs() {
 		return priceImgs;
 	}
-	public void setPriceImgs(Set<RoomImagesDto> priceImgs) {
+	public void setPriceImgs(Set<FileDBDto> priceImgs) {
 		this.priceImgs = priceImgs;
 	}
 	public RoomTypeEntity getRoomType() {
@@ -56,8 +56,8 @@ public class RoomDto extends AbstractDto{
 	public void setRoomType(RoomTypeEntity roomType) {
 		this.roomType = roomType;
 	}
-	public RoomDto(String nameRoom, Set<RoomImagesDto> roomImgs, String description, Set<StuffsEntity> stuffs,
-			Integer price, Set<RoomImagesDto> priceImgs, RoomTypeEntity roomType) {
+	public RoomDto(String nameRoom, Set<FileDBDto> roomImgs, String description, Set<StuffsEntity> stuffs,
+			Integer price, Set<FileDBDto> priceImgs, RoomTypeEntity roomType) {
 		super();
 		this.nameRoom = nameRoom;
 		this.roomImgs = roomImgs;

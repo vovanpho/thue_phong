@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class AbstractDto{
 	
-	private Long id;
+	private String id;
 
 	private Date createdDate;
 
@@ -14,11 +14,11 @@ public class AbstractDto{
 
 	private String lastModifiedBy;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

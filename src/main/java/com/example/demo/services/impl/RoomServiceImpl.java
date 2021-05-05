@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.convert.RoomConvert;
-import com.example.demo.convert.RoomImageConvert;
 import com.example.demo.dto.RoomDto;
 import com.example.demo.entity.RoomEntity;
 import com.example.demo.entity.RoomTypeEntity;
@@ -82,6 +81,12 @@ public class RoomServiceImpl implements IRoomService {
 			listDto.add(roomConvert.convertToDto(t));
 		});
 		return listDto;
+	}
+
+	@Override
+	public RoomEntity findOneById(String id) {
+		// TODO Auto-generated method stub
+		return roomRepository.findOneById(id);
 	}
 
 }

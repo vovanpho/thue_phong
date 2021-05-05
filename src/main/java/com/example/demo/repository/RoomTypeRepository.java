@@ -7,4 +7,6 @@ import com.example.demo.entity.RoomTypeEntity;
 @Repository
 public interface RoomTypeRepository extends JpaRepository<RoomTypeEntity, Long> {
 	RoomTypeEntity findOneByNameTypeRoom(String name);
+
+	boolean existsById(String id);
 }

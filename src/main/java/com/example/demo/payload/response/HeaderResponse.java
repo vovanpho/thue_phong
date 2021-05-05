@@ -5,7 +5,7 @@ import java.util.List;
 public class HeaderResponse {
 	private String token;
 	private String type = "Bearer";
-	private Long id;
+	private String id;
 	private String username;
 	private String email;
 	private List<String> roles;
@@ -25,11 +25,11 @@ public class HeaderResponse {
 		this.type = tokenType;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -52,10 +52,10 @@ public class HeaderResponse {
 	public List<String> getRoles() {
 		return roles;
 	}
-	public HeaderResponse(String accessToken, Long id, String username, String email, List<String> roles) {
+	public HeaderResponse(String accessToken, String string, String username, String email, List<String> roles) {
 		super();
 		this.token = accessToken;
-		this.id = id;
+		this.id = string;
 		this.username = username;
 		this.email = email;
 		this.roles = roles;
