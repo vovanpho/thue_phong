@@ -41,6 +41,7 @@ public class RoomConvert {
 		roomDto.setDescription(entity.getDescription());
 		roomDto.setPrice(entity.getPrice());
 		roomDto.setRoomType(entity.getRoomType());
+		
 		//stuffs
 		Set<StuffsEntity> stuffs = stuffsServiceImpl.findAllByRoomId(entity.getId());
 		roomDto.setStuffs(stuffs);
@@ -55,14 +56,12 @@ public class RoomConvert {
 			}else if(t.getCateOfImg().equals(EImage.Price)){
 				priceImgs.add(roomImageConvert.toDto(t));
 			}
-			
 		});
-
 		roomDto.setRoomImgs(roomImgs);
 		roomDto.setPriceImgs(priceImgs);
-		
 		return roomDto;
 	}
+	
 	public RoomEntity convertEntity(RoomDto dto) {
 		RoomEntity roomEntity = new RoomEntity();
 		roomEntity.setId(dto.getId());
@@ -70,19 +69,10 @@ public class RoomConvert {
 		roomEntity.setDescription(dto.getDescription());
 		roomEntity.setRoomType(dto.getRoomType());
 		roomEntity.setPrice(dto.getPrice());
-	
-//		// images		
-//		dto.getPriceImgs().forEach(t -> {
-//			dto.getRoomImgs().add(t);
-//		});
-//		if(dto.getId()!=null) {
-//			Set<RoomImagesEntity> roomImages = roomImagesServiceImpl.findAllByRoomId(dto.getId());
-//			dto.getRoomImgs().forEach(t -> {
-//				roomImages.add(roomImageConvert.toEntity(t));
-//			});
-//		}
 		return roomEntity;	
 	}
+	
+	
 	public RoomEntity convertEntity(RoomDto dto, RoomEntity entity) {
 		entity.setId(dto.getId());
 		entity.setNameRoom(dto.getNameRoom());

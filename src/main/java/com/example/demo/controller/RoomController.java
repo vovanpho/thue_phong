@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.RoomDto;
-import com.example.demo.entity.RoomEntity;
-import com.example.demo.payload.response.MessageResponse;
-import com.example.demo.repository.RoomRepository;
 import com.example.demo.services.impl.RoomServiceImpl;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -26,13 +23,12 @@ public class RoomController {
 	@Autowired 
 	private	RoomServiceImpl roomServiceImpl;
 	
-//	@Autowired 
-//	private MessageResponse messageResponse;
 	
 	@GetMapping("/getdata")
 	public List<RoomDto> getAlldata(){
 		return roomServiceImpl.findAll();
 	}
+	
 	@PostMapping("/set-data-room")
 	public ResponseEntity<String> setData(@RequestBody RoomDto roomDto) {
 		if(roomServiceImpl.save(roomDto) != null) {

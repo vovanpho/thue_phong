@@ -60,4 +60,8 @@ public class FileStorageServiceImpl implements IFileDBService {
 	  public Set<FileDBEntity> findAllByRoomId(String id) {
 		  return fileDBRepository.findAllByRoomId(id);
 	  }
+	  
+	  public void deteleById(String id) {
+		  fileDBRepository.deleteById(id);
+	  }
 }

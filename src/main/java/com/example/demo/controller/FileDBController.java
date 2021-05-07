@@ -8,6 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +41,6 @@ public class FileDBController {
     String message = "";
     try {
       storageService.store(files, cateOfImg, id);
-
       message = "Uploaded the file successfully ";
       return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
     } catch (Exception e) {
@@ -75,5 +75,18 @@ public class FileDBController {
     return ResponseEntity.ok()
         .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")
         .body(fileDB.getData());
+  }
+  
+  @DeleteMapping("/files/delete/{id}")
+  public ResponseEntity<ResponseMessage> deleteById(@PathVariable String id){
+	  String message = "";
+	   try {
+		   	storageService.deteleById(id);
+		      message = "deleted the file successfully ";
+		      return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+	   } catch (Exception e) {
+		      message = "Could not delete the file " ;
+		      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+	   }
   }
 }
