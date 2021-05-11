@@ -1,11 +1,15 @@
 package com.example.demo.entity;
 
-import javax.persistence.CascadeType;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -31,6 +35,12 @@ public class RoomEntity extends BaseEntity {
 	
 	private Integer price;
 
+//	@ManyToMany(fetch = FetchType.LAZY)
+//	@JoinTable(	name = "room_stuff", 
+//				joinColumns = @JoinColumn(name = "room_id"), 
+//				inverseJoinColumns = @JoinColumn(name = "stuff_id"))
+//	private Set<StuffsEntity> stuffs = new HashSet<>();
+	
 	public String getNameRoom() {
 		return nameRoom;
 	}
@@ -63,18 +73,29 @@ public class RoomEntity extends BaseEntity {
 		this.price = price;
 	}
 
+//	public Set<StuffsEntity> getStuffs() {
+//		return stuffs;
+//	}
+//
+//	public void setStuffs(Set<StuffsEntity> stuffs) {
+//		this.stuffs = stuffs;
+//	}
+
 	public RoomEntity(@NotNull String nameRoom, RoomTypeEntity roomType, String description, Integer price) {
 		super();
 		this.nameRoom = nameRoom;
 		this.roomType = roomType;
 		this.description = description;
 		this.price = price;
+		
 	}
 
 	public RoomEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	
 	
 	
 	

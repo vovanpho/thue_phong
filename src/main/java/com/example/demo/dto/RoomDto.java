@@ -1,5 +1,6 @@
 package com.example.demo.dto;
 
+import java.util.List;
 import java.util.Set;
 
 import com.example.demo.entity.RoomTypeEntity;
@@ -10,10 +11,12 @@ public class RoomDto extends AbstractDto{
 	private String nameRoom;
 	private Set<FileDBDto> roomImgs;
 	private String description;
-	private Set<StuffsEntity> stuffs;
+	private List<StuffsEntity> stuffs;
 	private Integer price;
 	private Set<FileDBDto> priceImgs;
 	private RoomTypeEntity roomType;
+
+	
 	public String getNameRoom() {
 		return nameRoom;
 	}
@@ -32,10 +35,12 @@ public class RoomDto extends AbstractDto{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Set<StuffsEntity> getStuffs() {
+
+	
+	public List<StuffsEntity> getStuffs() {
 		return stuffs;
 	}
-	public void setStuffs(Set<StuffsEntity> stuffs) {
+	public void setStuffs(List<StuffsEntity> stuffs) {
 		this.stuffs = stuffs;
 	}
 	public Integer getPrice() {
@@ -56,7 +61,7 @@ public class RoomDto extends AbstractDto{
 	public void setRoomType(RoomTypeEntity roomType) {
 		this.roomType = roomType;
 	}
-	public RoomDto(String nameRoom, Set<FileDBDto> roomImgs, String description, Set<StuffsEntity> stuffs,
+	public RoomDto(String nameRoom, Set<FileDBDto> roomImgs, String description, List<StuffsEntity> stuffs,
 			Integer price, Set<FileDBDto> priceImgs, RoomTypeEntity roomType) {
 		super();
 		this.nameRoom = nameRoom;

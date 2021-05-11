@@ -53,9 +53,12 @@ public class FileStorageServiceImpl implements IFileDBService {
 	    return fileDBRepository.findById(id).get();
 	  }
 	  
-	  public Stream<FileDBEntity> getAllFiles() {
-	    return fileDBRepository.findAll().stream();
-	  }
+//	  public Stream<FileDBEntity> getAllFiles() {
+//	    return fileDBRepository.findAll().stream();
+//	  }
+	  public List<FileDBEntity> getAllFiles() {
+		    return fileDBRepository.findAll();
+		  }
 	  
 	  public Set<FileDBEntity> findAllByRoomId(String id) {
 		  return fileDBRepository.findAllByRoomId(id);

@@ -1,6 +1,8 @@
 package com.example.demo.convert;
 
+import java.io.Console;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,11 +42,11 @@ public class RoomConvert {
 		roomDto.setNameRoom(entity.getNameRoom());
 		roomDto.setDescription(entity.getDescription());
 		roomDto.setPrice(entity.getPrice());
-		roomDto.setRoomType(entity.getRoomType());
+ 		roomDto.setRoomType(entity.getRoomType());
 		
-		//stuffs
-		Set<StuffsEntity> stuffs = stuffsServiceImpl.findAllByRoomId(entity.getId());
-		roomDto.setStuffs(stuffs);
+//		//stuffs
+//		List<StuffsEntity> stuffs = stuffsServiceImpl.findAllByRoomId(entity.getId());
+//		roomDto.setStuffs(stuffs);
 		
 		// images		
 		Set<FileDBDto> roomImgs = new HashSet<FileDBDto>();

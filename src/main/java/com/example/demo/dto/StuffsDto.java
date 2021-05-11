@@ -1,32 +1,16 @@
-package com.example.demo.entity;
+package com.example.demo.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import com.example.demo.entity.RoomEntity;
 
-
-@Entity
-@Table(name = "STUFFS")
-public class StuffsEntity extends BaseEntity {
-
+public class StuffsDto extends AbstractDto{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@NotBlank
-	@Size(max=120)
 	private String nameStuff;
 	
 	private Integer quality;
 	
-	@Column(columnDefinition = "TEXT")
 	private String description;
 	
-
+	private RoomEntity room;
 
 	public String getNameStuff() {
 		return nameStuff;
@@ -52,20 +36,26 @@ public class StuffsEntity extends BaseEntity {
 		this.description = description;
 	}
 
-	
+	public RoomEntity getRoom() {
+		return room;
+	}
 
-	public StuffsEntity(@NotBlank @Size(max = 120) String nameStuff, Integer quality, String description) {
+	public void setRoom(RoomEntity room) {
+		this.room = room;
+	}
+
+	public StuffsDto(String nameStuff, Integer quality, String description, RoomEntity room) {
 		super();
 		this.nameStuff = nameStuff;
 		this.quality = quality;
 		this.description = description;
+		this.room = room;
 	}
 
-	public StuffsEntity() {
+	public StuffsDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	
 }

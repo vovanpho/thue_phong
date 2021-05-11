@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,22 +50,34 @@ public class FileDBController {
     }
   }
 
+//  @GetMapping("/files")
+//  public ResponseEntity<List<ResponseFile>> getListFiles() {
+//    List<ResponseFile> files = storageService.getAllFiles().map(dbFile -> {
+//      String fileDownloadUri = ServletUriComponentsBuilder
+//          .fromCurrentContextPath()
+//          .path("/files/")
+//          .path(dbFile.getId())
+//          .toUriString();
+//
+//      return new ResponseFile(
+//          dbFile.getName(),
+//          fileDownloadUri,
+//          dbFile.getType(),
+//          dbFile.getData().length);
+//    }).collect(Collectors.toList());
+//
+//    return ResponseEntity.status(HttpStatus.OK).body(files);
+//  }
+  
   @GetMapping("/files")
-  public ResponseEntity<List<ResponseFile>> getListFiles() {
-    List<ResponseFile> files = storageService.getAllFiles().map(dbFile -> {
-      String fileDownloadUri = ServletUriComponentsBuilder
-          .fromCurrentContextPath()
-          .path("/files/")
-          .path(dbFile.getId())
-          .toUriString();
-
-      return new ResponseFile(
-          dbFile.getName(),
-          fileDownloadUri,
-          dbFile.getType(),
-          dbFile.getData().length);
-    }).collect(Collectors.toList());
-
+  public ResponseEntity<List<FileDBEntity>> getListFiles() {
+    List<FileDBEntity> files = storageService.getAllFiles();
+    return ResponseEntity.status(HttpStatus.OK).body(files);
+  }
+  
+  @GetMapping("/filesImage")
+  public ResponseEntity<Set<FileDBEntity>> getListFilesByIdRoom(@RequestParam String id) {
+    Set<FileDBEntity> files = storageService.findAllByRoomId(id);
     return ResponseEntity.status(HttpStatus.OK).body(files);
   }
 
