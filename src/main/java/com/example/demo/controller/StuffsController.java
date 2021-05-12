@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.StuffsDto;
+import com.example.demo.entity.RoomTypeEntity;
 import com.example.demo.services.impl.StuffsServiceImpl;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -25,23 +26,25 @@ public class StuffsController {
 	@Autowired
 	private StuffsServiceImpl stuffsServiceImpl;
 	
-//	@PostMapping("/set-data-stuff")
-//	public ResponseEntity<String> setData(@RequestBody StuffsDto stuffsDto){
-//		if(stuffsServiceImpl.save(stuffsDto)!=null) {
-//			return new ResponseEntity<>("ok duoc", HttpStatus.OK);
-//		}
-//		return new ResponseEntity<>("fail", HttpStatus.BAD_REQUEST);
-//	}
-//	
-//	@GetMapping("/get-list-data")
-//	public List<StuffsDto> getAllData(){
-//		return stuffsServiceImpl.findAll();
-//	}
+	@PostMapping("/set-data-stuff")
+	public ResponseEntity<String> setData(@RequestBody StuffsDto stuffsDto){
+		if(stuffsServiceImpl.save(stuffsDto)!=null) {
+			return new ResponseEntity<>("ok duoc", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("fail", HttpStatus.BAD_REQUEST);
+	}
 	
-//	@DeleteMapping("/delete/{id}")
-//	public RequestEntity<String> detele(@RequestBody StuffsDto dto){
-//		if(stuffsServiceImpl.) {
-//		return null;
-//		
+	@GetMapping("/get-list-data")
+	public List<StuffsDto> getAllData(){
+		return stuffsServiceImpl.findAll();
+	}
+	
+//	
+//	@PostMapping("/delete")
+//	public ResponseEntity<String> detele(@RequestBody RoomTypeEntity roomTypeEntity) {
+//		if(roomTypeServiceImpl.detete(roomTypeEntity)) {
+//			return new ResponseEntity<>("su", HttpStatus.OK);
+//		}
+//		return new ResponseEntity<>("not", HttpStatus.BAD_REQUEST);
 //	}
 }

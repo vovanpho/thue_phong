@@ -22,9 +22,13 @@ public class RoomServiceImpl implements IRoomService {
 
 	@Autowired
 	private RoomTypeRepository roomTypeRepository;
+	
+	@Autowired
+	private RoomStuffServiceImpl roomStuffServiceImpl;
 
 	@Autowired
 	private RoomConvert roomConvert;
+	
 
 	@Override
 	public RoomDto save(RoomDto roomDto) {
@@ -66,5 +70,7 @@ public class RoomServiceImpl implements IRoomService {
 		// TODO Auto-generated method stub
 		return roomRepository.findOneById(id);
 	}
+	
+	
 
 }

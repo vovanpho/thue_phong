@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.RoomEntity;
 import com.example.demo.entity.RoomStuffEntity;
-import com.example.demo.entity.RoomStuffKey;
+import com.example.demo.entity.KeyRoomStuff;
 
 @Repository
-public interface RoomStuffRepository extends JpaRepository<RoomStuffEntity, RoomStuffKey> {
+public interface RoomStuffRepository extends JpaRepository<RoomStuffEntity, KeyRoomStuff> {
 	List<RoomStuffEntity> findAllByRoom(RoomEntity roomEntity);
 }

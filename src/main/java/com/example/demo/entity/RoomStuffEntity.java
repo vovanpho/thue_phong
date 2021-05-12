@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "room_stuff")
 public class RoomStuffEntity {
 	@EmbeddedId
-	private RoomStuffKey id;
+	private KeyRoomStuff id;
 	
 	@ManyToOne
 	@JoinColumn(name = "room_id")

@@ -1,7 +1,5 @@
 package com.example.demo.dto;
 
-import com.example.demo.entity.RoomEntity;
-
 public class StuffsDto extends AbstractDto{
 	
 	private String nameStuff;
@@ -10,7 +8,6 @@ public class StuffsDto extends AbstractDto{
 	
 	private String description;
 	
-	private RoomEntity room;
 
 	public String getNameStuff() {
 		return nameStuff;
@@ -36,20 +33,13 @@ public class StuffsDto extends AbstractDto{
 		this.description = description;
 	}
 
-	public RoomEntity getRoom() {
-		return room;
-	}
 
-	public void setRoom(RoomEntity room) {
-		this.room = room;
-	}
 
-	public StuffsDto(String nameStuff, Integer quality, String description, RoomEntity room) {
+	public StuffsDto(String nameStuff, Integer quality, String description) {
 		super();
 		this.nameStuff = nameStuff;
 		this.quality = quality;
 		this.description = description;
-		this.room = room;
 	}
 
 	public StuffsDto() {

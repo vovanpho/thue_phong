@@ -1,6 +1,5 @@
 package com.example.demo.convert;
 
-import java.io.Console;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,8 +14,7 @@ import com.example.demo.entity.FileDBEntity;
 import com.example.demo.entity.RoomEntity;
 import com.example.demo.entity.StuffsEntity;
 import com.example.demo.services.impl.FileStorageServiceImpl;
-//import com.example.demo.services.impl.StuffsService;
-import com.example.demo.services.impl.StuffsServiceImpl;
+import com.example.demo.services.impl.RoomStuffServiceImpl;
 
 @Component
 public class RoomConvert {
@@ -28,7 +26,7 @@ public class RoomConvert {
 	private FileStorageServiceImpl fileStorageServiceImpl;
 	
 	@Autowired
-	private StuffsServiceImpl stuffsServiceImpl;
+	private RoomStuffServiceImpl roomStuffServiceImpl;
 	
 	public RoomDto convertToDto(RoomEntity entity) {
 		RoomDto roomDto = new RoomDto();
@@ -45,8 +43,8 @@ public class RoomConvert {
  		roomDto.setRoomType(entity.getRoomType());
 		
 //		//stuffs
-//		List<StuffsEntity> stuffs = stuffsServiceImpl.findAllByRoomId(entity.getId());
-//		roomDto.setStuffs(stuffs);
+		List<StuffsEntity> stuffs = roomStuffServiceImpl.findStuffsByRoom(entity);
+		roomDto.setStuffs(stuffs);
 		
 		// images		
 		Set<FileDBDto> roomImgs = new HashSet<FileDBDto>();
