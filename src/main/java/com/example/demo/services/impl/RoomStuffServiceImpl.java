@@ -31,7 +31,14 @@ public class RoomStuffServiceImpl {
 		RoomStuffEntity roomStuffEntity = new RoomStuffEntity(keyRoomStuff, roomEntity, stuffsEntity);
 		return roomStuffRepository.save(roomStuffEntity);
 	}
-	public void delete(KeyRoomStuff id) {		
-		roomStuffRepository.deleteById(id);
+
+	public boolean delete(RoomEntity roomEntity, StuffsEntity stuffsEntity) {
+		// TODO Auto-generated method stub
+		KeyRoomStuff keyRoomStuff =  new KeyRoomStuff(roomEntity.getId(), stuffsEntity.getId());
+		if(roomStuffRepository.existsById(keyRoomStuff)) {
+			roomStuffRepository.deleteById(keyRoomStuff);
+			return true;
+		}
+		return false;
 	}
 }

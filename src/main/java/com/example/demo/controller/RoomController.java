@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dto.RoomDto;
 import com.example.demo.entity.KeyRoomStuff;
 import com.example.demo.entity.RoomEntity;
+import com.example.demo.entity.RoomTypeEntity;
 import com.example.demo.entity.StuffsEntity;
 import com.example.demo.services.impl.RoomServiceImpl;
 import com.example.demo.services.impl.RoomStuffServiceImpl;
+import com.example.demo.services.impl.StuffsServiceImpl;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -31,6 +33,9 @@ public class RoomController {
 	
 	@Autowired
 	private RoomStuffServiceImpl roomStuffServiceImpl;
+	
+	@Autowired
+	private StuffsServiceImpl stuffsServiceImpl;
 	
 	
 	@GetMapping("/getdata")
@@ -53,9 +58,18 @@ public class RoomController {
 		if(roomStuffServiceImpl.save(roomEntity, stuffsEntity) != null) {
 			return new ResponseEntity<>("susas", HttpStatus.OK);
 		}
-		
 		return new ResponseEntity<>("not", HttpStatus.BAD_REQUEST);
-		
+	}
+	
+	@PostMapping("/delete-stuff/{id}/{e}")
+	public ResponseEntity<String> detele(@PathVariable String e, @PathVariable String id) {
+		RoomEntity roomEntity = roomServiceImpl.findOneById(id);
+		StuffsEntity stuffsEntity = stuffsServiceImpl.findOneById(e);
+		System.out.println(roomEntity);
+		if(roomStuffServiceImpl.delete(roomEntity,stuffsEntity)) {
+			return new ResponseEntity<>("su", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("not", HttpStatus.BAD_REQUEST);
 	}
 	
 	

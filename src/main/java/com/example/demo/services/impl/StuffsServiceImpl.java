@@ -46,6 +46,8 @@ public class StuffsServiceImpl implements IStuffsService{
 		return null;
 	}
 
-
+	public StuffsEntity findOneById(String id) {
+		return stuffsRepository.findOneById(id);
+	}
 
 }

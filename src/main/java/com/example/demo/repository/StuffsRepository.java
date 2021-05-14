@@ -9,4 +9,5 @@ import com.example.demo.entity.StuffsEntity;
 @Repository
 public interface StuffsRepository extends JpaRepository<StuffsEntity, String> {
 	List<StuffsEntity> findAllById(String id);
+	StuffsEntity findOneById(String id);
 }
