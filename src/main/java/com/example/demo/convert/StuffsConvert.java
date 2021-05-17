@@ -25,6 +25,10 @@ public class StuffsConvert implements BaseConverter<StuffsEntity, StuffsDto>{
 		// TODO Auto-generated method stub
 		StuffsDto dto = new StuffsDto();
 		dto.setId(entity.getId());
+		dto.setCreatedBy(entity.getCreatedBy());
+		dto.setCreatedDate(entity.getCreatedDate());
+		dto.setLastModifiedBy(entity.getLastModifiedBy());
+		dto.setLastModifiedDate(entity.getLastModifiedDate());
 		dto.setNameStuff(entity.getNameStuff());
 		dto.setDescription(entity.getDescription());
 		dto.setQuality(entity.getQuality());

@@ -25,6 +25,9 @@ public class RoomServiceImpl implements IRoomService {
 	
 	@Autowired
 	private RoomStuffServiceImpl roomStuffServiceImpl;
+	
+	@Autowired
+	private FileStorageServiceImpl fileStorageServiceImpl;
 
 	@Autowired
 	private RoomConvert roomConvert;
@@ -71,6 +74,21 @@ public class RoomServiceImpl implements IRoomService {
 		return roomRepository.findOneById(id);
 	}
 	
-	
+	public Boolean delete(RoomDto roomDto){
+		if(roomDto.getId()!=null) {
+			roomStuffServiceImpl.findKeyByRoom(
+					roomRepository.findOneById(roomDto.getId()))
+					.forEach(t->{
+						roomStuffServiceImpl.deleteByKey(t);
+					});
+			fileStorageServiceImpl.findAllByRoomId(roomDto.getId())
+					.forEach(r->{
+						fileStorageServiceImpl.deteleById(r.getId());
+					});
+			roomRepository.deleteById(roomDto.getId());
+			return true;
+		}
+		return false;
+	}
 
 }

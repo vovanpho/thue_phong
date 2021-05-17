@@ -2,14 +2,12 @@ package com.example.demo.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.convert.StuffsConvert;
 import com.example.demo.dto.StuffsDto;
-import com.example.demo.entity.RoomEntity;
 import com.example.demo.entity.StuffsEntity;
 import com.example.demo.repository.StuffsRepository;
 import com.example.demo.services.IStuffsService;
@@ -40,10 +38,18 @@ public class StuffsServiceImpl implements IStuffsService{
 	}
 
 	@Override
-	public StuffsDto detele(StuffsDto stuffsDto) {
+	public Boolean detele(StuffsDto stuffsDto) {
 		// TODO Auto-generated method stub
-		
-		return null;
+		if(stuffsDto.getId()!=null) {
+			roomStuffServiceImpl.findKeyByStuff(
+					stuffsRepository.findOneById(stuffsDto.getId()))
+					.forEach(t->{
+						roomStuffServiceImpl.deleteByKey(t);
+					});
+			stuffsRepository.deleteById(stuffsDto.getId());
+			return true;
+		}
+		return false;
 	}
 
 	public StuffsEntity findOneById(String id) {

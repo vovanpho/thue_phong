@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.RoomDto;
+import com.example.demo.dto.StuffsDto;
 import com.example.demo.entity.KeyRoomStuff;
 import com.example.demo.entity.RoomEntity;
 import com.example.demo.entity.RoomTypeEntity;
@@ -52,9 +53,18 @@ public class RoomController {
 		
 	}
 	
-	@PostMapping("/set-data-room_stuff/{id}")
-	public ResponseEntity<String> setDatarRoomStuff(@RequestBody StuffsEntity stuffsEntity, @PathVariable String id) {
+	@PostMapping("/delete")
+	public ResponseEntity<String> detele(@RequestBody RoomDto roomDto) {
+		if(roomServiceImpl.delete(roomDto)) {
+			return new ResponseEntity<>("su", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("not", HttpStatus.BAD_REQUEST);
+	}
+	
+	@PostMapping("/set-data-room_stuff/{id}/{e}")
+	public ResponseEntity<String> setDatarRoomStuff(@PathVariable String e, @PathVariable String id) {
 		RoomEntity roomEntity =  roomServiceImpl.findOneById(id);
+		StuffsEntity stuffsEntity = stuffsServiceImpl.findOneById(e);
 		if(roomStuffServiceImpl.save(roomEntity, stuffsEntity) != null) {
 			return new ResponseEntity<>("susas", HttpStatus.OK);
 		}

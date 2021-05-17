@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entity.RoomEntity;
 
 @Repository
-public interface RoomRepository extends JpaRepository<RoomEntity, Long>{
+public interface RoomRepository extends JpaRepository<RoomEntity, String>{
 
 	RoomEntity findOneById(String string);
 

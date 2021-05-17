@@ -8,5 +8,5 @@ import com.example.demo.entity.StuffsEntity;
 public interface IStuffsService {
 	List<StuffsDto> findAll();
 	StuffsEntity save(StuffsDto stuffsDto);
-	StuffsDto detele (StuffsDto stuffsDto);
+	Boolean detele (StuffsDto stuffsDto);
  }

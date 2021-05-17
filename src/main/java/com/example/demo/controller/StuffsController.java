@@ -39,12 +39,12 @@ public class StuffsController {
 		return stuffsServiceImpl.findAll();
 	}
 	
-//	
-//	@PostMapping("/delete")
-//	public ResponseEntity<String> detele(@RequestBody RoomTypeEntity roomTypeEntity) {
-//		if(roomTypeServiceImpl.detete(roomTypeEntity)) {
-//			return new ResponseEntity<>("su", HttpStatus.OK);
-//		}
-//		return new ResponseEntity<>("not", HttpStatus.BAD_REQUEST);
-//	}
+	
+	@PostMapping("/delete")
+	public ResponseEntity<String> detele(@RequestBody StuffsDto stuffsDto) {
+		if(stuffsServiceImpl.detele(stuffsDto)) {
+			return new ResponseEntity<>("su", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("not", HttpStatus.BAD_REQUEST);
+	}
 }

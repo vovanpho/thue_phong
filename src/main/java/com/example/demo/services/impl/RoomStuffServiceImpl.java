@@ -15,7 +15,8 @@ import com.example.demo.repository.RoomStuffRepository;
 @Service
 public class RoomStuffServiceImpl {
 	
-	@Autowired private RoomStuffRepository roomStuffRepository;
+	@Autowired 
+	private RoomStuffRepository roomStuffRepository;
 
 	public List<StuffsEntity> findStuffsByRoom(RoomEntity roomEntity) {
 		// TODO Auto-generated method stub
@@ -26,6 +27,25 @@ public class RoomStuffServiceImpl {
 		return listStuff;
 	}
 	
+	public List<KeyRoomStuff> findKeyByRoom(RoomEntity roomEntity) {
+		// TODO Auto-generated method stub
+		List<KeyRoomStuff>listKey = new ArrayList<KeyRoomStuff>();
+		roomStuffRepository.findAllByRoom(roomEntity).forEach(t->{
+			listKey.add(t.getId());
+		});
+		return listKey;
+	}
+	
+	public List<KeyRoomStuff> findKeyByStuff(StuffsEntity stuffsEntity) {
+		// TODO Auto-generated method stub
+		List<KeyRoomStuff>listKey = new ArrayList<KeyRoomStuff>();
+		roomStuffRepository.findAllByStuff(stuffsEntity).forEach(t->{
+			listKey.add(t.getId());
+		});
+		return listKey;
+	}
+	
+	
 	public RoomStuffEntity save(RoomEntity roomEntity, StuffsEntity stuffsEntity) {
 		KeyRoomStuff keyRoomStuff =  new KeyRoomStuff(roomEntity.getId(), stuffsEntity.getId());
 		RoomStuffEntity roomStuffEntity = new RoomStuffEntity(keyRoomStuff, roomEntity, stuffsEntity);
@@ -35,6 +55,14 @@ public class RoomStuffServiceImpl {
 	public boolean delete(RoomEntity roomEntity, StuffsEntity stuffsEntity) {
 		// TODO Auto-generated method stub
 		KeyRoomStuff keyRoomStuff =  new KeyRoomStuff(roomEntity.getId(), stuffsEntity.getId());
+		if(roomStuffRepository.existsById(keyRoomStuff)) {
+			roomStuffRepository.deleteById(keyRoomStuff);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean deleteByKey(KeyRoomStuff keyRoomStuff) {
 		if(roomStuffRepository.existsById(keyRoomStuff)) {
 			roomStuffRepository.deleteById(keyRoomStuff);
 			return true;
